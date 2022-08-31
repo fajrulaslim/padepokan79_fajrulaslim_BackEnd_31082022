@@ -36,7 +36,7 @@
                     <!-- Logo-->
                     <div>
                         <a href="<?= base_url(); ?>" class="logo">
-                            <h3 class="text-white">Padepokan79</h3>
+                            <h3 class="text-white">Dashboard</h3>
                         </a>
                     </div>
                     <!-- End Logo-->

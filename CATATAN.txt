@@ -4,7 +4,7 @@ BAHASA PEMROGRAMAN YANG DIPAKAI:
 
 SOFTWARE YANG DIBUTUHKAN:
 1. Apache HTTP Server: XAMPP / MAMP / Laragon / dsb...
-2. MySQL database: Phpmyadmin / Mysql Workbench / Navicat / dsb ...
+2. DBMS: Phpmyadmin / Mysql Workbench / Navicat / dsb ...
 3. Browser: Google Chrome / Firefox / dsb ...
 4. Code Editor (Optional): VS Code / Sublime Text / dsb ...
 
@@ -21,7 +21,6 @@ CATATAN
 1. Nama database harus sama dengan nama file database yang terdapat pada file project yaitu "padepokan79".
 2. Jika ingin mengganti nama database ikuti langkah berikut:
 	- Buka Software MySQL Database Anda, buat database dengan nama misal: "tes-fajrulaslim"
- 	- Buka file "padepokan79.sql" dengan Code Editor, hapus baris 20 - 22
  	- Import file database
  	- Buka file "/application/config/database.php", pada baris 81 ganti nama database sesuai point pertama yaitu "tes-fajrulaslim"
 

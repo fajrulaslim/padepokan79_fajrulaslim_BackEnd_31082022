@@ -73,38 +73,38 @@ class Home_model extends CI_model{
 	// TUGAS 03
 
 	public function getAllPointNasabah(){
-		$query = "SELECT `transaksi`.`accountId`, `nasabah`.`name`, `transaksi`.`description`, SUM(`transaksi`.`amount`) as totalAmount
+		$query = "SELECT `transaksi`.`accountId`, `nasabah`.`name`, `transaksi`.`description`, `transaksi`.`amount`
 					FROM `transaksi` JOIN `nasabah`
 					ON `transaksi`.`accountId`	= `nasabah`.`accountId`
 					WHERE `transaksi`.`description` = 'Beli Pulsa' or `transaksi`.`description` = 'Bayar Listrik'
-					GROUP BY `transaksi`.`accountId`, `transaksi`.`description`
 		";
+
 		$result = $this->db->query($query)->result_array();
 
 		foreach($result as $key => $r) {
 			$hitungPoint = 0;
 			if($r['description'] == 'Bayar Listrik') {
-				if($r['totalAmount'] >= 50001) {
-					if($r['totalAmount'] <= 100000) {
-						$hitungPoint = $hitungPoint + (($r['totalAmount']-50000) / 2000);
+				if($r['amount'] >= 50001) {
+					if($r['amount'] <= 100000) {
+						$hitungPoint = $hitungPoint + (($r['amount']-50000) / 2000);
 					} else {
 						$hitungPoint = $hitungPoint + (50000 / 2000);
 					}			
 				}
-				if($r['totalAmount'] > 100000) {
-					$hitungPoint = $hitungPoint + ((($r['totalAmount']-100000) / 2000) * 2);	
+				if($r['amount'] > 100000) {
+					$hitungPoint = $hitungPoint + ((($r['amount']-100000) / 2000) * 2);	
 				}
 			}
 			if($r['description'] == 'Beli Pulsa') {
-				if($r['totalAmount'] >= 10001) {
-					if($r['totalAmount'] <= 30000) {
-						$hitungPoint = $hitungPoint + (($r['totalAmount']-10000) / 1000);
+				if($r['amount'] >= 10001) {
+					if($r['amount'] <= 30000) {
+						$hitungPoint = $hitungPoint + (($r['amount']-10000) / 1000);
 					} else {
 						$hitungPoint = $hitungPoint + (20000 / 1000);
 					}			
 				}
-				if($r['totalAmount'] > 30000) {
-					$hitungPoint = $hitungPoint + ((($r['totalAmount']-30000) / 1000) * 2);	
+				if($r['amount'] > 30000) {
+					$hitungPoint = $hitungPoint + ((($r['amount']-30000) / 1000) * 2);	
 				}
 			}
 			$result[$key]['point'] = $hitungPoint;			
@@ -123,10 +123,10 @@ class Home_model extends CI_model{
 
 		return $nasabah;
 
-		// echo '<pre>';
-		// print_r($nasabah);
-		// echo '</pre>';
-		// die();
+		echo '<pre>';
+		print_r($nasabah);
+		echo '</pre>';
+		die();
 	}
 
 	// TUGAS 04
